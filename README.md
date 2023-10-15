@@ -1,16 +1,32 @@
-# 🎉 Rotowire API Client
+<h1 p align="center">
+🎉 Rotowire API Client
+</h1>
+
+<p align="center">
+    <a href="https://gfay63.github.io/rotowire-api-client/"><b>Documentation & API Specification</b></a>
+</p>
+
+<div align="center">
+
+[![npm version](https://img.shields.io/npm/v/rotowire-api-client.svg)](https://www.npmjs.com/package/rotowire-api-client)
+[![install size](https://img.shields.io/badge/dynamic/json?url=https://packagephobia.com/v2/api.json?p=rotowire-api-client&query=$.install.pretty&label=install%20size&style=flat-square)](https://packagephobia.now.sh/result?p=rotowire-api-client)
+[![npm downloads](https://img.shields.io/npm/dm/rotowire-api-client.svg?style=flat-square)](https://npm-stat.com/charts.html?package=rotowire-api-client)
+[![Known Vulnerabilities](https://snyk.io/test/npm/rotowire-api-client/badge.svg)](https://snyk.io/test/npm/rotowire-api-client)
+![GitHub top language](https://img.shields.io/github/languages/top/gfay63/rotowire-api-client)
+[![GitHub Sponsors](https://img.shields.io/github/sponsors/gfay63)](https://github.com/sponsors/gfay63)
+</div>
 
 Welcome to the comprehensive interface for the Rotowire API Client!
 
-This package provides a seamless integration with the Rotowire API, allowing developers to fetch sports data with ease. It's been refactored and optimized to provide a straightforward experience.
+This package provides a seamless integration with the Rotowire API, allowing developers to fetch sports data with ease. It's been refactored and optimized to provide a straightforward experience. This, in part, uses the Open API v3 [Open API Generator](https://openapi-generator.tech/).
 
 > 🚨 Disclaimer
 >
-> This package initially provides access to a select set of Rotowire APIs, as I only have API specs for those that I have acquired for my project. `If you have other API Specs for endpoints or Sports you would like me to add, that can be arranged.` Additionally, not all use cases have been exhaustively tested or verified. Users are encouraged to test the package in their specific contexts and report any issues they encounter. Contributions and feedback are always welcome!
+> This package initially provides access to a select set of Rotowire APIsthat have been acquired for my project from Rotowire. Additionally, not all use cases have been exhaustively tested or verified. Users are encouraged to test the package in their specific contexts and report any issues they encounter. Contributions and feedback are always welcome!
 
 ## 🌟 Why Use This?
 
-- **Partial Coverage**: This package offers complete access to the a select set of Rotowire API.
+- **Partial Coverage**: This package offers complete access to the a select set of Rotowire Endpoints.
 - **Optimized for Use**: The refactoring ensures that accessing and using the API is as intuitive and straightforward as possible.
 - **Full documentation**: See [full documentation of the API Specification](https://gfay63.github.io/rotowire-api-client/).
 
