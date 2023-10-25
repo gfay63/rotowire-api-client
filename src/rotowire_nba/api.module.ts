@@ -4,7 +4,7 @@ import { AsyncConfiguration, Configuration, ConfigurationFactory } from './confi
 
 import { DefaultRotowireNbaApiService } from './api/default.service';
 
-//@Global()
+@Global()
 @Module({
     imports: [HttpModule],
     exports: [

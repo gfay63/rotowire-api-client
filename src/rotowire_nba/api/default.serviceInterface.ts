@@ -30,6 +30,14 @@ export interface DefaultRotowireNbaApiServiceInterface {
     dailyProjections(format: string, date?: string, extraHttpRequestParams?: any): Observable<{}>;
 
     /**
+    * Expected Lineups
+    * 
+    * @param format Output Format - json or yaml (default)
+    * @param date Date \&quot;YYYY-MM-DD\&quot;
+    */
+    expectedLineups(format: string, date?: string, extraHttpRequestParams?: any): Observable<{}>;
+
+    /**
     * Injuries
     * 
     * @param format Output Format - json or yaml (default)
@@ -44,16 +52,5 @@ export interface DefaultRotowireNbaApiServiceInterface {
     * @param hours Optional hours ahead of date (up to 2 weeks ahead)
     */
     newsInjuries(format: string, date?: string, hours?: number, extraHttpRequestParams?: any): Observable<{}>;
-
-    /**
-    * Weekly Projections
-    * 
-    * @param format Output Format - json or yaml (default)
-    * @param position Position
-    * @param season Season year (number); default &#x3D; current
-    * @param team Team Code, either a 2 or 3 character abbreviation. \&quot;LA\&quot; is the Rams, \&quot;LAC\&quot; are the Chargers.
-    * @param week Week (number); default &#x3D; current
-    */
-    weeklyProjections(format: string, position?: string, season?: number, team?: string, week?: number, extraHttpRequestParams?: any): Observable<{}>;
 
 }

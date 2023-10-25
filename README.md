@@ -30,6 +30,25 @@ This package provides a seamless integration with the Rotowire API, allowing dev
 - **Optimized for Use**: The refactoring ensures that accessing and using the API is as intuitive and straightforward as possible.
 - **Full documentation**: See [full documentation of the API Specification](https://gfay63.github.io/rotowire-api-client/).
 
+## ✅ Feeds Included (at this point)
+
+- ⚾️ MLB
+  - dailyProjections(format, date?)
+  - expectedLineups(format, date?)
+  - injuries(format)
+  - newsInjuries(format, date?)
+  - projectedStarters(format, date?, spring_training?)
+- 🏀 NBA
+  - dailyProjections(format, date?)
+  - expectedLineups(format, date?)
+  - injuries(format)
+  - newsInjuries(format, date?, hours?)
+- 🏈 NFL
+  - dailyProjections(format, date?)
+  - injuries(format)
+  - newsInjuries(format, date?, hours?)
+  - weeklyProjections(format, position?, season?, team?, week?)
+
 ## 🛠 Installation
 
 ```sh
