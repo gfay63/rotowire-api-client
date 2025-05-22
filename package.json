@@ -1,6 +1,6 @@
 {
   "name": "rotowire-api-client",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Node and NestJS wrappers for Rotowire feeds",
   "contributors": [
     {
@@ -42,17 +42,24 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@nestjs/axios": "^3.0.1",
-    "@nestjs/common": "^10.2.8",
-    "@nestjs/config": "^3.1.1",
-    "axios": "^1.6.1"
+    "axios": "^1.9.0"
+  },
+  "peerDependencies": {
+    "@nestjs/axios": "^4.0.0",
+    "@nestjs/common": "^11.1.1",
+    "@nestjs/config": "^4.0.2"
   },
   "devDependencies": {
-    "@nestjs/testing": "^10.2.8",
+    "@eslint/config-array": "^0.20.0",
+    "@eslint/object-schema": "^2.1.6",
+    "@nestjs/axios": "^4.0.0",
+    "@nestjs/common": "^11.1.1",
+    "@nestjs/config": "^4.0.2",
+    "@nestjs/testing": "^11.1.1",
     "@types/jest": "^29.5.8",
-    "@typescript-eslint/eslint-plugin": "^6.10.0",
-    "@typescript-eslint/parser": "^6.10.0",
-    "eslint": "^8.53.0",
+    "@typescript-eslint/eslint-plugin": "^7.18.0",
+    "@typescript-eslint/parser": "^7.18.0",
+    "eslint": "^8.57.1",
     "jest": "^29.7.0",
     "typedoc": "^0.25.2"
   }

@@ -1,6 +1,4 @@
-<h1 p align="center">
-🎉 Rotowire API Client
-</h1>
+# 🎉 Rotowire API Client
 
 <p align="center">
     <a href="https://gfay63.github.io/rotowire-api-client/"><b>Documentation & API Specification</b></a>
@@ -14,19 +12,20 @@
 [![Known Vulnerabilities](https://snyk.io/test/npm/rotowire-api-client/badge.svg)](https://snyk.io/test/npm/rotowire-api-client)
 ![GitHub top language](https://img.shields.io/github/languages/top/gfay63/rotowire-api-client)
 [![GitHub Sponsors](https://img.shields.io/github/sponsors/gfay63)](https://github.com/sponsors/gfay63)
+
 </div>
 
 Welcome to the comprehensive interface for the Rotowire API Client!
 
-This package provides a seamless integration with the Rotowire API, allowing developers to fetch sports data with ease. It's been refactored and optimized to provide a straightforward experience. This, in part, uses the Open API v3 [Open API Generator](https://openapi-generator.tech/).
+This package provides a seamless integration with the Rotowire API, allowing developers to fetch sports data with ease. It's been refactored and optimized to provide a straightforward experience. It is derived in part from the Rotowire API using Open API v3 [Open API Generator](https://openapi-generator.tech/).
 
 > 🚨 Disclaimer
 >
-> This package initially provides access to a select set of Rotowire APIsthat have been acquired for my project from Rotowire. Additionally, not all use cases have been exhaustively tested or verified. Users are encouraged to test the package in their specific contexts and report any issues they encounter. Contributions and feedback are always welcome!
+> While this package provides comprehensive access to the Rotowire API, due to the vastness and complexity of the APIs, not all use cases have been exhaustively tested or verified. Users are encouraged to test the package in their specific contexts and report any issues they encounter. Contributions and feedback are always welcome!
 
 ## 🌟 Why Use This?
 
-- **Partial Coverage**: This package offers complete access to the a select set of Rotowire Endpoints.
+- **Full Coverage**: This package offers complete access to the Rotowire API. No more partial implementations or missing features.
 - **Optimized for Use**: The refactoring ensures that accessing and using the API is as intuitive and straightforward as possible.
 - **Full documentation**: See [full documentation of the API Specification](https://gfay63.github.io/rotowire-api-client/).
 
@@ -55,33 +54,60 @@ This package provides a seamless integration with the Rotowire API, allowing dev
 npm install rotowire-api-client --save
 ```
 
+## ⚡ Quick Start
+
+Here's a minimal example to get you started:
+
+```typescript
+import { RotowireApiClientModule } from "rotowire-api-client";
+
+@Module({
+  imports: [
+    RotowireApiClientModule.forRoot({
+      apiKey: process.env.ROTOWIRE_API_KEY,
+      basePath: process.env.ROTOWIRE_BASE_PATH,
+    }),
+  ],
+})
+export class AppModule {}
+```
+
+## 🔧 Environment Variables
+
+Create a `.env` file in your project root:
+
+```env
+ROTOWIRE_API_KEY=your_rotowire_api_key
+ROTOWIRE_BASE_PATH=https://api.rotowire.com/v1
+```
+
 ## 🚀 Getting Started
 
 ### NestJS Implementation
 
-To begin, you'll need your API keys for MLB, NBA, and NFL.
+To begin, you'll need your Rotowire API key.
 
 #### Synchronous Configuration - Using `forRoot`
 
 You can configure the RotowireApiClientModule synchronously using the forRoot method:
 
-```javascript
-import { RotowireApiClientModule } from 'rotowire-api-client';
+```typescript
+import { RotowireApiClientModule } from "rotowire-api-client";
 
 @Module({
   imports: [
     RotowireApiClientModule.forRoot({
       mlb: {
-        apiKey: 'YOUR_MLB_API_KEY',
-        basePath: 'YOUR_MLB_BASE_PATH',
+        apiKey: "YOUR_MLB_API_KEY",
+        basePath: "YOUR_MLB_BASE_PATH",
       },
       nba: {
-        apiKey: 'YOUR_NBA_API_KEY',
-        basePath: 'YOUR_NBA_BASE_PATH',
+        apiKey: "YOUR_NBA_API_KEY",
+        basePath: "YOUR_NBA_BASE_PATH",
       },
       nfl: {
-        apiKey: 'YOUR_NFL_API_KEY',
-        basePath: 'YOUR_NFL_BASE_PATH',
+        apiKey: "YOUR_NFL_API_KEY",
+        basePath: "YOUR_NFL_BASE_PATH",
       },
     }),
   ],
@@ -93,9 +119,9 @@ export class AppModule {}
 
 If you're using NestJS's ConfigModule and ConfigService to manage your application's configuration, you can configure the RotowireApiClientModule asynchronously:
 
-```javascript
-import { RotowireApiClientModule } from 'rotowire-api-client';
-import { ConfigModule, ConfigService } from '@nestjs/config';
+```typescript
+import { RotowireApiClientModule } from "rotowire-api-client";
+import { ConfigModule, ConfigService } from "@nestjs/config";
 
 @Module({
   imports: [
@@ -104,56 +130,56 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
       imports: [ConfigModule],
       useFactory: async (configService: ConfigService) => ({
         mlb: {
-          apiKey: configService.get<string>('MLB_API_KEY'),
-          basePath: configService.get<string>('MLB_BASE_PATH'),
+          apiKey: configService.get<string>("MLB_API_KEY"),
+          basePath: configService.get<string>("MLB_BASE_PATH"),
         },
         nba: {
-          apiKey: configService.get<string>('NBA_API_KEY'),
-          basePath: configService.get<string>('NBA_BASE_PATH'),
+          apiKey: configService.get<string>("NBA_API_KEY"),
+          basePath: configService.get<string>("NBA_BASE_PATH"),
         },
         nfl: {
-          apiKey: configService.get<string>('NFL_API_KEY'),
-          basePath: configService.get<string>('NFL_BASE_PATH'),
+          apiKey: configService.get<string>("NFL_API_KEY"),
+          basePath: configService.get<string>("NFL_BASE_PATH"),
         },
       }),
       inject: [ConfigService],
     }),
   ],
-  exports: [RotowireApiClientModule], 
+  exports: [RotowireApiClientModule],
 })
 export class AppModule {}
 ```
 
-In the asynchronous configuration example, the ConfigService is used to retrieve the API keys and base paths from your environment or configuration files.
-
 #### Using the Client in Your Service or Controller
 
-After configuration, you can import `RotowireApiClientModule` into your module, then import the appropriate API (e.g. `RotowireMlbApi`) and inject the service `RotowireMlbApi.DefaultRotowireMlbApiService` (or the respective service for other sports) into your services or controllers. Here is an example accessing a few of the MLB API endpoints in a controller:
+After configuration, you can import `RotowireApiClientModule` into your module, then import the appropriate API and inject the service into your services or controllers. Here is an example accessing some of the Rotowire API endpoints in a controller:
 
-```ts
-import { Controller, Get, HttpException, HttpStatus } from '@nestjs/common';
-import { Observable } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
-import { RotowireMlbApi } from 'rotowire-api-client';
+```typescript
+import { Controller, Get, HttpException, HttpStatus } from "@nestjs/common";
+import { Observable } from "rxjs";
+import { catchError, map } from "rxjs/operators";
+import { RotowireApi } from "rotowire-api-client";
 
-@Controller('mlb')
-export class MlbController {
-    constructor(private readonly rwMlbService: RotowireMlbApi.DefaultRotowireMlbApiService) {}
+@Controller("rotowire")
+export class RotowireController {
+  constructor(
+    private readonly rotowireService: RotowireApi.DefaultRotowireApiService
+  ) {}
 
-    @Get('injuries')
-    getInjuries(): Observable<any> {
-        return this.rwMlbService.injuries("en", "json").pipe(
-            map(apiResponse => {
-                if (apiResponse.status !== 200) {
-                    throw new HttpException(apiResponse.data, apiResponse.status);
-                }
-                return apiResponse.data;
-            }),
-            catchError(err => {
-                throw new HttpException(err.message, HttpStatus.INTERNAL_SERVER_ERROR);
-            })
-        );
-    }
+  @Get("news")
+  getNews(): Observable<any> {
+    return this.rotowireService.getNews().pipe(
+      map((apiResponse) => {
+        if (apiResponse.status !== 200) {
+          throw new HttpException(apiResponse.data, apiResponse.status);
+        }
+        return apiResponse.data;
+      }),
+      catchError((err) => {
+        throw new HttpException(err.message, HttpStatus.INTERNAL_SERVER_ERROR);
+      })
+    );
+  }
 }
 ```
 
@@ -161,26 +187,97 @@ export class MlbController {
 
 For a non-NestJS implementation, you can directly use the services provided by the package.
 
-```javascript
-const { DefaultRotowireMlbApiService } = require('rotowire-api-client');
+```typescript
+import { DefaultRotowireApiService } from "rotowire-api-client";
 
-const mlbConfig = {
-    apiKey: 'YOUR_MLB_API_KEY',
-    basePath: 'https://api.rotowire.us/mlb/production/v7'
+const config = {
+  apiKey: "YOUR_ROTOWIRE_API_KEY",
+  basePath: "https://api.rotowire.com/v1",
 };
 
-const mlbService = new DefaultRotowireMlbApiService(mlbConfig);
+const rotowireService = new DefaultRotowireApiService(config);
 
-// Use mlbService to access all the MLB endpoint APIs
+// Use rotowireService to access all the Rotowire endpoint APIs
 ```
-
-With these setups, you have the entire Rotowire API at your fingertips! Currently, the package supports MLB, NBA, and NFL. However, other sports can be added in the future.
 
 ## 📌 Features
 
 - **Easy Initialization**: Set up and start using the client in no time.
-- **Multiple Sports**: Includes endpoints from MLB, NBA and NFL.
-- **Expandable**: While the package currently supports MLB, NBA, and NFL, it's designed to be easily expandable to other sports in the future.
+- **Comprehensive API Access**: Access every aspect of the Rotowire API.
+- **Efficient Error Handling**: Built-in logging and error handling mechanisms for smoother development.
+- **Regular Updates**: Stay in sync with the official Rotowire API.
+- **TypeScript Support**: Full TypeScript support with comprehensive type definitions.
+
+## 🔍 TypeScript Types and Interfaces
+
+The package provides comprehensive TypeScript types and interfaces for all API responses. Here's an example of how to use them:
+
+```typescript
+import { RotowireApi, RotowireApiTypes } from "rotowire-api-client";
+
+@Controller("rotowire")
+export class RotowireController {
+  constructor(
+    private readonly rotowireService: RotowireApi.DefaultRotowireApiService
+  ) {}
+
+  @Get("news")
+  getNews(): Observable<RotowireApiTypes.NewsResponse> {
+    return this.rotowireService
+      .getNews()
+      .pipe(map((apiResponse) => apiResponse.data));
+  }
+}
+```
+
+## ⚠️ Error Handling and Rate Limiting
+
+The package includes built-in error handling and rate limiting support:
+
+```typescript
+import { HttpException, HttpStatus } from "@nestjs/common";
+import { catchError, retry } from "rxjs/operators";
+
+@Controller("rotowire")
+export class RotowireController {
+  @Get("data")
+  getData() {
+    return this.rotowireService.someEndpoint().pipe(
+      retry(3), // Retry failed requests up to 3 times
+      catchError((err) => {
+        if (err.response?.status === 429) {
+          throw new HttpException(
+            "Rate limit exceeded",
+            HttpStatus.TOO_MANY_REQUESTS
+          );
+        }
+        throw new HttpException(err.message, HttpStatus.INTERNAL_SERVER_ERROR);
+      })
+    );
+  }
+}
+```
+
+## 🔧 Troubleshooting
+
+Common issues and their solutions:
+
+1. **API Key Issues**
+
+   - Ensure your API key is correctly set in your environment variables
+   - Check if your API key has the necessary permissions
+   - Verify the API key is active and not expired
+
+2. **Rate Limiting**
+
+   - Implement retry logic with exponential backoff
+   - Cache frequently accessed data
+   - Monitor your API usage
+
+3. **Type Errors**
+   - Make sure you're using the correct type imports
+   - Check the API documentation for the expected response types
+   - Use TypeScript's type inference to help catch errors early
 
 ## 🤝 Contribute
 
